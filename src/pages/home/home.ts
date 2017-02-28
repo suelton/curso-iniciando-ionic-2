@@ -15,7 +15,7 @@ export class HomePage {
   }
 
   pushPage(): void {
-
+    this.navCtrl.push(MenuTestePage);
   }
 
 }
