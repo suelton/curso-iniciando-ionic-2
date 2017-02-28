@@ -1,12 +1,26 @@
-<ion-menu [content]="menuContent">
+<ion-menu [content]="menuContent" id="menu1">
     <ion-header>
         <ion-title>Menu Principal</ion-title>
     </ion-header>
     <ion-content>
         <ion-list>
-            <button ion-item *ngFor="let p of pages" (click)="openPage(p)" menuToggle>
+            <button ion-item *ngFor="let p of pages" (click)="openPage(p, 'menu1')">
                 <ion-icon name="{{p.icon}}"></ion-icon>
-                {{p.title}}            
+                {{p.title}}
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-menu side="right" type="push" [content]="menuContent" id="menu2" (ionOpen)="menuOpened()">
+    <ion-header>
+        <ion-title>Menu Secundário</ion-title>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <button ion-item *ngFor="let p of pages" (click)="openPage(p, 'menu2')">
+                <ion-icon name="{{p.icon}}"></ion-icon>
+                {{p.title}}
             </button>
         </ion-list>
     </ion-content>

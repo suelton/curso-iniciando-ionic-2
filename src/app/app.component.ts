@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { HomePage } from './../pages/home/home';
@@ -10,11 +10,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {  
+export class MyApp {
   pages: Array<{component: any, title: string, icon: string}>;
   rootPage = TabsPage;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, public menuCtrl: MenuController) {
     this.pages = [
       {component: HomePage, title: 'Home', icon: 'home'},
       {component: MenuTestePage, title: 'Menu Teste', icon: 'menu'}
@@ -28,8 +28,12 @@ export class MyApp {
     });
   }
 
-  openPage(page: any) : void {
+  openPage(page: any, menuSide: string) : void {
     this.rootPage = page.component;
+    this.menuCtrl.close(menuSide);
   }
 
+  menuOpened() : void {
+    console.log('Abriu');
+  }
 }
